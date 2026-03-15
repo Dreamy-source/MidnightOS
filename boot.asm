@@ -30,7 +30,6 @@ kernel_load:
     mov si, kernel_success_msg
     call print_string
 
-    ; переход в Protected Mode
     cli
     lgdt [gdt_descriptor]
     in al, 0x92
@@ -66,7 +65,6 @@ kernel_loading_msg db 'Loading kernel...', 0x0d, 0x0a, 0
 kernel_success_msg db 'Kernel loaded!', 0x0d, 0x0a, 0
 kernel_error_msg db 'Disk error! System halted', 0x0d, 0x0a, 0
 
-; GDT
 gdt_start:
     dq 0x0
 gdt_code:
@@ -103,7 +101,6 @@ protected_mode:
     mov byte [eax], 'P'
     mov byte [eax+1], 0x04
 
-    ; Проверка байта из ядра
     mov eax, 0x10000
     mov bl, [eax]
     mov [0xb8002], bl
