@@ -1,6 +1,6 @@
 # MidnightOS
 
-### Hello, World! I am 13 years old, and I wrote my own operating system.
+### Hello, World! I am 13 years old, and i wrote my own operating system.
 ╔══════════════════════════════════════════════════════╗
 ║
 ║
@@ -13,5 +13,4 @@
 ║ ║
 ║ [13 y.o] ║
 ║ [org 0x7c00] ║
-║ [Krasnoyarsk, Russia] ║
 ╚══════════════════════════════════════════════════════╝
