@@ -17,7 +17,7 @@
 
 ## Features
 - Can change kernel in your system! [Data-Rewrite]
-- Can change your system fully! [You can re-write kernel in your system]
+- Can change your system fully! [You can re-write kernel or something in your system]
 - Guarranted OS-Update every 1-7 Days
 - Last update: Full OS-Upgrade
 - Custom bootloader (Limine, UEFI)
@@ -33,7 +33,12 @@
 -   Get-Lang system [Not finished]
 -   Rights Parameter Block [RPB]
 -   Get-Rights system [Not finished]
--   Discord: https://discord.com/channels/1491405695042457620
+
+Discord: https://discord.com/channels/1491405695042457620
+**Join in Discord if you want to:**
+- Discuss MidnightOS
+- Share your kernel mods
+- Report bugs (but don't cry if you break it yourself in Data-Rewrite mode)
 
 ## Build & Run
 ```bash
