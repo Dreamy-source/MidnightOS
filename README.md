@@ -15,6 +15,8 @@
 
 ## Features
 - Guarranted OS-Update every 1-7 Days
+- Last update: Full OS-Upgrade
+- Fixed: 27 Critical bugs
 - Custom bootloader (Limine, UEFI+BIOS)
 - IDT, PIC, PIT — interrupts work
 - Keyboard input (scancodes → ASCII)
