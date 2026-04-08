@@ -1,6 +1,3 @@
-// ============================================
-// ПРОТОТИПЫ
-// ============================================
 void outw(unsigned short port, unsigned short val);
 void outb(unsigned short port, unsigned char val);
 void putchar(char c, int color);
@@ -16,9 +13,6 @@ void console_putchar(char c);
 void console_backspace(void);
 void console(void);
 
-// ============================================
-// ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ (ОДИН РАЗ!)
-// ============================================
 char* video = (char*)0xB8000;
 int cursor_x = 0;
 int cursor_y = 0;
@@ -29,9 +23,6 @@ int max_x = 60;
 static char input_buffer[256];
 static int input_len = 0;
 
-// ============================================
-// ВИДЕО ФУНКЦИИ
-// ============================================
 void scroll_screen(void) {
     for (int i = 0; i < 24 * 80 * 2; i++) {
         video[i] = video[i + 160];
@@ -248,16 +239,10 @@ void DEV_DEBUG() {
 }
 */
 
-// ============================================
-// ВНЕШНИЕ ФУНКЦИИ ИЗ АССЕМБЛЕРА
-// ============================================
 extern void setup_idt();
 extern void setup_pic();
 extern void setup_pit();
 
-// ============================================
-// ГЛАВНАЯ ФУНКЦИЯ
-// ============================================
 void kernel_c() {
     clear_screen();
     disable_bios_cursor();
@@ -277,21 +262,18 @@ void kernel_c() {
     print("[ ON ] Kernel\n", 0x0A);
     print("Midnight initialized!\n", 0x0A);
     
-    // Настройка прерываний
     setup_idt();
     setup_pic();
     setup_pit();
     asm volatile("sti");
     
-    // Позиция для консоли
     cursor_x = 0;
     cursor_y = 14;
     console_prefix();
     
-    min_x = cursor_x;  // позиция после промпта (для backspace)
+    min_x = cursor_x;
     min_y = cursor_y;
     
-    // Бесконечный цикл (всё делают прерывания)
     while(1) {
         asm volatile("hlt");
     }
