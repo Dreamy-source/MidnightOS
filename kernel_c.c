@@ -189,6 +189,28 @@ void handle_enter(void) {
 }
 
 /*
+// ============================
+// LOCALIZATION
+// ============================
+void user_localization(void) {
+  localize = {
+    en = "en";
+    ru = "ru";
+    // others
+  }
+  base = localize.en;
+
+  en = localize.en;
+  ru = localize.ru;
+
+  chs = {
+    en = true;
+    ru = false;
+  }
+}
+*/
+
+/*
 void DEV_DEBUG() {
   CONSOLE = {
     COMMANDS = {
