@@ -188,27 +188,129 @@ void handle_enter(void) {
     min_y = cursor_y;
 }
 
-/*
 // ===============================
 // LOCALIZATION PARAMETER BLOCK
 // ===============================
-void user_localization(void) {
-  localize = {
-    en = "en";
-    ru = "ru";
-    // others
+struct localization_array {
+    char* base;
+    char* en;
+    char* ru;
+    
+    int base_state;
+    int en_state;
+    int ru_state;
+};
+
+struct localization_array localization = {
+  .base = "en",
+  .en = "en",
+  .ru = "ru",
+  
+  .base_state = 1,
+  .en_state = 0,
+  .ru_state = 0
+  
+  // 1 - ON
+  // 0 - OFF
+};
+
+void lpb_get_lang(void) {
+  if (localization.base_state == 1 && localization.en_state == 0 && localization.ru_state == 0) {
+    print("Lang: en [base]\n", 0x07);
   }
-  base = localize.en;
-
-  en = localize.en;
-  ru = localize.ru;
-
-  chs = {
-    en = true;
-    ru = false;
+  else if (localization.en_state == 1 && localization.base_state == 0 && localization.ru_state == 0) {
+    print("Lang: en\n", 0x07);
+  }
+  else if (localization.ru_state == 1 && localization.base_state == 0 && localization.en_state == 0) {
+    print("Lang: ru\n", 0x07);
+  }
+  else {
+    print("No language selected. Using .base_state parameter from file: sys_lang.p\n", 0x07);
   }
 }
+
+void base_loc_system_answer(void) {
+  print("====================\n", 0x0D);
+  print("     MidnightOS\n", 0x0D);
+  print("====================\n", 0x0D);
+  lpb_get_lang();
+  print("Booting from ", 0x0F);
+  print("limine\n", 0x0B);
+  print("Starting...\n", 0x0F);
+  print("Getting: C\n", 0x0F);
+  print("Initializing system...\n", 0x0F);
+  print("Setting up: IDT, PIC, PIT\n", 0x0F);
+  print("[ ON ] IDT\n", 0x0A);
+  print("[ ON ] PIC\n", 0x0A);
+  print("[ ON ] PIT\n", 0x0A);
+  print("[ ON ] Kernel\n", 0x0A);
+  print("Midnight initialized!\n", 0x0A);
+}
+
+void en_loc_system_answer(void) {
+  print("====================\n", 0x0D);
+  print("     MidnightOS\n", 0x0D);
+  print("====================\n", 0x0D);
+  lpb_get_lang();
+  print("Booting from ", 0x0F);
+  print("limine\n", 0x0B);
+  print("Starting...\n", 0x0F);
+  print("Getting: C\n", 0x0F);
+  print("Initializing system...\n", 0x0F);
+  print("Setting up: IDT, PIC, PIT\n", 0x0F);
+  print("[ ON ] IDT\n", 0x0A);
+  print("[ ON ] PIC\n", 0x0A);
+  print("[ ON ] PIT\n", 0x0A);
+  print("[ ON ] Kernel\n", 0x0A);
+  print("Midnight initialized!\n", 0x0A);
+}
+
+/*
+void ru_loc_system_answer(void) {
+  print("====================\n", 0x0D);
+  print("     MidnightOS\n", 0x0D);
+  print("====================\n", 0x0D);
+  lpb_get_lang();
+  print("Загрузчик: ", 0x0F);
+  print("limine\n", 0x0B);
+  print("Запуск...\n", 0x0F);
+  print("Загружаем: C\n", 0x0F);
+  print("Инициализация систему...\n", 0x0F);
+  print("Настройка: IDT, PIC, PIT\n", 0x0F);
+  print("[ ВКЛ ] IDT\n", 0x0A);
+  print("[ ВКЛ ] PIC\n", 0x0A);
+  print("[ ВКЛ ] PIT\n", 0x0A);
+  print("[ ВКЛ ] Kernel\n", 0x0A);
+  print("Midnight инициализирована!\n", 0x0A);
+}
 */
+
+// =========================
+// RIGHTS PARAMETER BLOCK
+// =========================
+struct rights_array = {
+  char* AP;
+  char* A;
+  char* U;
+  
+  char* dreamy;
+  char* user;
+};
+
+struct rights_array rights = {
+  .AP = "Alpha-Prime",
+  .A = "Alpha",
+  .U = "User",
+  
+  .dreamy = rights.AP,  // its me
+  .user = rights.U,   // user
+  
+  /*
+  AP - System, Kernel, [dreamy], Code Enthusiast
+  A - User max rights
+  U - User base rights
+  */
+};
 
 /*
 void DEV_DEBUG() {
@@ -269,20 +371,19 @@ void kernel_c() {
     clear_screen();
     disable_bios_cursor();
     
-    print("====================\n", 0x0D);
-    print("     MidnightOS\n", 0x0D);
-    print("====================\n", 0x0D);
-    print("Booting from ", 0x0F);
-    print("limine\n", 0x0B);
-    print("Starting...\n", 0x0F);
-    print("Getting: C\n", 0x0F);
-    print("Initializing system...\n", 0x0F);
-    print("Setting up: IDT, PIC, PIT\n", 0x0F);
-    print("[ ON ] IDT\n", 0x0A);
-    print("[ ON ] PIC\n", 0x0A);
-    print("[ ON ] PIT\n", 0x0A);
-    print("[ ON ] Kernel\n", 0x0A);
-    print("Midnight initialized!\n", 0x0A);
+    // BASE STATEMENT LOCALIZATION
+    if (localization.base_state == 1 && localization.en_state == 0 && localization.ru_state == 0) {
+      base_loc_system_answer();
+    }
+    // EN STATEMENT LOCALIZATION
+    else if (localization.en_state == 1 && localization.base_state == 0 && localization.ru_state == 0) {
+      en_loc_system_answer();
+    }
+    /* RU STATEMENT LOCALIZATION
+    else if (localization.ru_state == 1 && localization.base_state == 0 && localization.en_state == 0) {
+      ru_loc_system_answer();
+    }
+    */
     
     setup_idt();
     setup_pic();
