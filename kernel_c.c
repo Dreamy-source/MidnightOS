@@ -240,11 +240,11 @@ void rights_init(void) {
   
   rights.current = rights.user;
   
-  if (rights.current == rights.user || rights.current == rights.A || rights.current == rights.AP) {
+  if (rights.current == rights.user || rights.current == rights.U || rights.current == rights.A || rights.current == rights.AP) {
     print("Rights: ", 0x0F);
     print(rights.current, 0x0F);
     print("\n", 0x0F);
-    print("Access: Full access\n", 0x0F);
+    print("Access: Read, Write\n", 0x0F);
   };
   
   /*
