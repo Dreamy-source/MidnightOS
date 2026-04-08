@@ -18,12 +18,19 @@
 ## Features
 - Guarranted OS-Update every 1-7 Days
 - Last update: Full OS-Upgrade
-- Fixed: 27 Critical bugs
 - Custom bootloader (Limine, UEFI+BIOS)
 - IDT, PIC, PIT — interrupts work
 - Keyboard input (scancodes → ASCII)
 - Console with commands: `hlp`, `clr`, `inf`, `poff`, `rboot`
 - Pure C + NASM. No stdlib. No garbage.
+- 
+## Change Log
+- Added:
+-   Localization Parameter [base, en, ru]
+-   Localization Parameter Block [LPB]
+-   Get-Lang system [Not finished]
+-   Rights Parameter Block [RPB]
+-   Get-Rights system [Not finished]
 
 ## Build & Run
 ```bash
