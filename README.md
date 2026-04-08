@@ -31,6 +31,7 @@
 -   Get-Lang system [Not finished]
 -   Rights Parameter Block [RPB]
 -   Get-Rights system [Not finished]
+-   Discord: https://discord.com/channels/1491405695042457620
 
 ## Build & Run
 ```bash
