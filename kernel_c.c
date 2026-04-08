@@ -189,9 +189,9 @@ void handle_enter(void) {
 }
 
 /*
-// ============================
-// LOCALIZATION
-// ============================
+// ===============================
+// LOCALIZATION PARAMETER BLOCK
+// ===============================
 void user_localization(void) {
   localize = {
     en = "en";
