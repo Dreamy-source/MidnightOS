@@ -25,7 +25,7 @@
 - Keyboard input (scancodes → ASCII)
 - Console with commands: `hlp`, `clr`, `inf`, `poff`, `rboot`
 - Pure C + NASM. No stdlib. No garbage.
-- 
+
 ## Change Log
 - Added:
 -   Localization Parameter [base, en, ru]
@@ -34,7 +34,7 @@
 -   Rights Parameter Block [RPB]
 -   Get-Rights system [Not finished]
 
-Discord: https://discord.com/channels/1491405695042457620
+## Discord: https://discord.com/channels/1491405695042457620
 **Join in Discord if you want to:**
 - Discuss MidnightOS
 - Share your kernel mods
