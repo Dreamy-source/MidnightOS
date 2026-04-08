@@ -157,7 +157,7 @@ void lpb_get_lang(void) {
     print("Lang: ru\n", 0x07);
   }
   else {
-    print("No language selected. Using .base_state parameter from file: sys_lang.p\n", 0x07);
+    print("No language selected. Using .base_state parameter from file: FILE_FILE_FILE.p\n", 0x07);
   }
 }
 
@@ -221,7 +221,6 @@ void ru_loc_system_answer(void) {
 // RIGHTS PARAMETER BLOCK
 // =========================
 struct rights_array {
-  char* APDR;
   char* AP;
   char* A;
   char* U;
@@ -245,6 +244,7 @@ void rights_init(void) {
     print("Rights: ", 0x0F);
     print(rights.current, 0x0F);
     print("\n", 0x0F);
+    print("Access: Full access\n", 0x0F);
   };
   
   /*
@@ -259,6 +259,7 @@ void execute_command(const char* cmd) {
         print("hlp - Command list\n", 0x0F);
         print("clr - Clear screen\n", 0x0F);
         print("inf - Information\n", 0x0F);
+        print("rights - Your rights\n", 0x0F);
         print("poff - Powering off computer\n", 0x0F);
         print("rboot - Rebooting computer\n", 0x0F);
     }
@@ -269,7 +270,7 @@ void execute_command(const char* cmd) {
         min_y = cursor_y;
     }
     else if (strcmp(cmd, "inf") == 0) {
-        print("MidnightOS v0.1\n", 0x0F);
+        print("MidnightOS v1.9\n", 0x0F);
         print("Build: 08.04.2026\n", 0x0F);
     }
     else if (strcmp(cmd, "poff") == 0) {
