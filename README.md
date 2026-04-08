@@ -18,7 +18,7 @@
 ## Features
 - Can change kernel in your system! [Data-Rewrite]
 - Can change your system fully! [You can re-write kernel or something in your system]
-- Guarranted OS-Update every 1-7 Days
+- Guarranted OS-Update every 1-14 Days
 - Last update: Full OS-Upgrade
 - Custom bootloader (Limine, UEFI)
 - IDT, PIC, PIT — interrupts work
