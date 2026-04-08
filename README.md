@@ -16,9 +16,11 @@
 ## NEW UPDATE! [8 April, 18:36, 2026]
 
 ## Features
+- Can change kernel in your system! [Data-Rewrite]
+- Can change your system fully! [You can re-write kernel in your system]
 - Guarranted OS-Update every 1-7 Days
 - Last update: Full OS-Upgrade
-- Custom bootloader (Limine, UEFI+BIOS)
+- Custom bootloader (Limine, UEFI)
 - IDT, PIC, PIT — interrupts work
 - Keyboard input (scancodes → ASCII)
 - Console with commands: `hlp`, `clr`, `inf`, `poff`, `rboot`
