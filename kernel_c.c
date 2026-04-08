@@ -215,7 +215,7 @@ void DEV_DEBUG() {
   CONSOLE = {
     COMMANDS = {
       HLP = {
-        DEV_DEBUG_CLR_RBOOT = "hlp"
+        DEV_DEBUG_CLR = "hlp"
         DEV_DEBUG_CLR_DESC = {[[
           Command list.
           =====================
@@ -223,7 +223,7 @@ void DEV_DEBUG() {
         DEV_PARTITION_QUEUE_CLR = 1;
       }
       CLR = {
-        DEV_DEBUG_CLR_RBOOT = "clr"
+        DEV_DEBUG_CLR = "clr"
         DEV_DEBUG_CLR_DESC = {[[
           Clearing screen [CONSOLE].
           =====================
