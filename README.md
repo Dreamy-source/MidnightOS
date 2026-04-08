@@ -13,7 +13,7 @@
 **32-bit OS written in C and Assembly.**
 **Boots with Limine. Own console. Own commands. Own world.**
 
-## Timer for new update: 8 Hours
+## NEW UPDATE! [8 April, 18:36, 2026]
 
 ## Features
 - Guarranted OS-Update every 1-7 Days
