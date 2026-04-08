@@ -120,74 +120,6 @@ void cmd_rboot(void) {
     *p = 0;
 }
 
-void execute_command(const char* cmd) {
-    if (strcmp(cmd, "hlp") == 0) {
-        print("hlp - Command list\n", 0x0F);
-        print("clr - Clear screen\n", 0x0F);
-        print("inf - Information\n", 0x0F);
-        print("poff - Powering off computer\n", 0x0F);
-        print("rboot - Rebooting computer\n", 0x0F);
-    }
-    else if (strcmp(cmd, "clr") == 0) {
-        clear_screen();
-        console_prefix();
-        min_x = cursor_x;
-        min_y = cursor_y;
-    }
-    else if (strcmp(cmd, "inf") == 0) {
-        print("MidnightOS v0.1\n", 0x0F);
-        print("Build: 08.04.2026\n", 0x0F);
-    }
-    else if (strcmp(cmd, "poff") == 0) {
-        cmd_poff();
-    }
-    else if (strcmp(cmd, "rboot") == 0) {
-        cmd_rboot();
-    }
-    else if (cmd[0] != '\0') {
-        print("Command not found: ", 0x0C);
-        print(cmd, 0x0C);
-        print("\n", 0x0C);
-    }
-}
-
-void console_putchar(char c) {
-    if (input_len < 255) {
-        input_buffer[input_len++] = c;
-        putchar(c, 0x0F);
-    }
-}
-
-void console_backspace(void) {
-    if (input_len > 0) {
-        input_len--;
-        if (cursor_x > min_x) {
-            cursor_x--;
-            putchar(' ', 0x0F);
-            cursor_x--;
-        }
-    }
-}
-
-void handle_enter(void) {
-    input_buffer[input_len] = '\0';
-
-    cursor_x = 0;
-    cursor_y++;
-    
-    if(cursor_y >= 25) {
-        scroll_screen();
-        cursor_y = 24;
-    }
-    
-    execute_command(input_buffer);
-    console_prefix();
-    input_len = 0;
-    
-    min_x = cursor_x;
-    min_y = cursor_y;
-}
-
 // ===============================
 // LOCALIZATION PARAMETER BLOCK
 // ===============================
@@ -288,29 +220,110 @@ void ru_loc_system_answer(void) {
 // =========================
 // RIGHTS PARAMETER BLOCK
 // =========================
-struct rights_array = {
+struct rights_array {
+  char* APDR;
   char* AP;
   char* A;
   char* U;
   
-  char* dreamy;
   char* user;
+  char* current;
 };
 
-struct rights_array rights = {
-  .AP = "Alpha-Prime",
-  .A = "Alpha",
-  .U = "User",
+struct rights_array rights;
+
+void rights_init(void) {
+  rights.AP = "Alpha-Prime";  // for Data-Rewrite
+  rights.A = "Alpha";  // for User
+  rights.U = "User";  // for User
   
-  .dreamy = rights.AP,  // its me
-  .user = rights.U,   // user
+  rights.user = rights.U;   // user
+  
+  rights.current = rights.user;
+  
+  if (rights.current == rights.user || rights.current == rights.A || rights.current == rights.AP) {
+    print("Rights: ", 0x0F);
+    print(rights.current, 0x0F);
+    print("\n", 0x0F);
+  };
   
   /*
-  AP - System, Kernel, [dreamy], Code Enthusiast
+  AP - System, Kernel, [dreamy]
   A - User max rights
   U - User base rights
   */
 };
+
+void execute_command(const char* cmd) {
+    if (strcmp(cmd, "hlp") == 0) {
+        print("hlp - Command list\n", 0x0F);
+        print("clr - Clear screen\n", 0x0F);
+        print("inf - Information\n", 0x0F);
+        print("poff - Powering off computer\n", 0x0F);
+        print("rboot - Rebooting computer\n", 0x0F);
+    }
+    else if (strcmp(cmd, "clr") == 0) {
+        clear_screen();
+        console_prefix();
+        min_x = cursor_x;
+        min_y = cursor_y;
+    }
+    else if (strcmp(cmd, "inf") == 0) {
+        print("MidnightOS v0.1\n", 0x0F);
+        print("Build: 08.04.2026\n", 0x0F);
+    }
+    else if (strcmp(cmd, "poff") == 0) {
+        cmd_poff();
+    }
+    else if (strcmp(cmd, "rboot") == 0) {
+        cmd_rboot();
+    }
+    else if (strcmp(cmd, "rights") == 0) {
+        rights_init();
+    }
+    else if (cmd[0] != '\0') {
+        print("Command not found: ", 0x0C);
+        print(cmd, 0x0C);
+        print("\n", 0x0C);
+    }
+}
+
+void console_putchar(char c) {
+    if (input_len < 255) {
+        input_buffer[input_len++] = c;
+        putchar(c, 0x0F);
+    }
+}
+
+void console_backspace(void) {
+    if (input_len > 0) {
+        input_len--;
+        if (cursor_x > min_x) {
+            cursor_x--;
+            putchar(' ', 0x0F);
+            cursor_x--;
+        }
+    }
+}
+
+void handle_enter(void) {
+    input_buffer[input_len] = '\0';
+
+    cursor_x = 0;
+    cursor_y++;
+    
+    if(cursor_y >= 25) {
+        scroll_screen();
+        cursor_y = 24;
+    }
+    
+    execute_command(input_buffer);
+    console_prefix();
+    input_len = 0;
+    
+    min_x = cursor_x;
+    min_y = cursor_y;
+}
 
 /*
 void DEV_DEBUG() {
