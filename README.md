@@ -21,5 +21,6 @@
 ## Build & Run
 ```bash
 echo "Starting Midnight..."
-qemu-system-x86_64 -kernel kernel.elf -m 256M
 echo "MidnightOS"
+qemu-system-x86_64 -kernel kernel.elf -m 256M
+echo "Goodbye! ^^"
