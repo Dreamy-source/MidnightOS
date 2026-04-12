@@ -118,7 +118,6 @@ setup_idt:
     mov ebx, 33
     call set_idt_entry
     
-    ; Загружаем IDT
     lidt [idt_descriptor]
     
     ret
