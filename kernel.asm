@@ -97,7 +97,6 @@ start:
 setup_idt:
     cli
     
-    ; Очищаем IDT
     mov edi, idt
     mov ecx, 256 * 8
     mov eax, 0
@@ -175,7 +174,7 @@ setup_pit:
     mov al, 0x36
     out 0x43, al
     
-    mov ax, 11931       ; ~100 Hz
+    mov ax, 11931
     out 0x40, al
     mov al, ah
     out 0x40, al
@@ -212,7 +211,6 @@ irq0_handler:
     ;call print_decimal
     ;add esp, 4
     
-    ; EOI
     mov al, 0x20
     out 0x20, al
     
