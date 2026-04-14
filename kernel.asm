@@ -27,12 +27,6 @@ extern kernel_c
 extern handle_enter
 extern console_putchar
 extern console_backspace
-;global putchar
-;global clear_char
-;global scroll_screen
-;global draw_cursor
-;global print_hex_byte
-;global print_decimal
 global setup_idt
 global setup_pic
 global setup_pit
@@ -68,12 +62,6 @@ start:
     
     cli
     hlt
-    
-    ; Screen clear
-    ;mov edi, 0xb8000
-    ;mov ecx, 80*25
-    ;mov eax, 0x0720
-    ;rep stosw
 
     mov byte [0xb8000], 'O'
     mov byte [0xb8001], 0x0A
@@ -88,10 +76,6 @@ start:
     mov byte [0xb8000 + 15], 0x04
 
     sti
-    
-    ; С
-    ;extern kmain
-    ;call kmain
     
     jmp main_loop
 setup_idt:
