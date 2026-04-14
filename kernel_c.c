@@ -377,6 +377,46 @@ void DEV_DEBUG() {
 }
 */
 
+// ==============================
+// KERNEL PARAMETER BLOCK
+// ==============================
+struct KERNEL_ARRAY {
+    int kernel_after;
+};
+
+void KERNEL_FAILURE(void) {
+    kernel_array.kernel_after = 0;
+    
+    print("KERNEL FAILURE.\n", 0x0C);           // красный
+    print("Host: kernel.asm in /dreamy/Midnight/AP/Core/Kernel.asm\n", 0x0C);
+    print("\n", 0x0F);
+    print("██╗░░██╗\n", 0x0F);
+    print("╚═╝░██╔╝\n", 0x0F);
+    print("░░░██╔╝░\n", 0x0F);
+    print("░░░╚██╗░\n", 0x0F);
+    print("██╗░╚██╗\n", 0x0F);
+    print("╚═╝░░╚═╝\n", 0x0F);
+    
+    asm volatile("cli");
+    asm volatile("hlt");
+};
+
+struct KERNEL_ARRAY kernel_array;
+
+void KERNEL_AFTER(void) {
+    kernel_array.kernel_after = 1;
+    
+    if (kernel_array.kernel_after == 1) {
+        print("Main complete finished.\n", 0x0F);
+        print("Starting kernel...\n", 0x0F);
+    }
+    else {
+        print("CRITICAL: ", 0x0F);
+        print("Kernel Error\n", 0x0C);
+        KERNEL_FAILURE();
+    }
+}
+
 extern void setup_idt();
 extern void setup_pic();
 extern void setup_pit();
