@@ -396,7 +396,8 @@ void KERNEL_FAILURE(void) {
     kernel_array.kernel_after = 0;
     
     print("KERNEL FAILURE.\n", 0x0C);
-    print("Host: kernel.asm in /user/Midnight/AP/Core/Kernel.asm\n", 0x0C);
+    print("Host: kernel.asm in /workspace/Midnight/AP/Core/Kernel.asm\n", 0x0C);
+    print("0x024001678", 0x0F);
     print("\n", 0x0F);
     print("██╗░░██╗\n", 0x0F);
     print("╚═╝░██╔╝\n", 0x0F);
