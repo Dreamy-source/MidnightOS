@@ -13,7 +13,7 @@
 **32-bit OS written in C and Assembly.**
 **Boots with Limine. Own console. Own commands. Own world.**
 
-## NEW UPDATE! [8 April, 18:36, 2026]
+## NEW UPDATE! [08.04.2026]
 
 ## Features
 - Can change kernel in your system! [Data-Rewrite]
