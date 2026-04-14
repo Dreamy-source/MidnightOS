@@ -3,7 +3,6 @@
 // [Build: 14.04.2026]
 // =======================
 
-
 void outw(unsigned short port, unsigned short val);
 void outb(unsigned short port, unsigned char val);
 void putchar(char c, int color);
