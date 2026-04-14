@@ -378,7 +378,8 @@ void DEV_DEBUG() {
 */
 
 // ==============================
-// KERNEL PARAMETER BLOCK
+// KERNEL PARAMETER BLOCK 
+// -> [Build: 14.04.2026]
 // ==============================
 struct KERNEL_ARRAY {
     int kernel_after;
