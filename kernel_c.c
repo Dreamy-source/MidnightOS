@@ -387,8 +387,8 @@ struct KERNEL_ARRAY {
 void KERNEL_FAILURE(void) {
     kernel_array.kernel_after = 0;
     
-    print("KERNEL FAILURE.\n", 0x0C);           // красный
-    print("Host: kernel.asm in /dreamy/Midnight/AP/Core/Kernel.asm\n", 0x0C);
+    print("KERNEL FAILURE.\n", 0x0C);
+    print("Host: kernel.asm in /user/Midnight/AP/Core/Kernel.asm\n", 0x0C);
     print("\n", 0x0F);
     print("██╗░░██╗\n", 0x0F);
     print("╚═╝░██╔╝\n", 0x0F);
