@@ -127,7 +127,8 @@ void cmd_rboot(void) {
 }
 
 // ===============================
-// LOCALIZATION PARAMETER BLOCK
+// [LOCALIZATION PARAMETER BLOCK]
+// [Build: Unknown]
 // ===============================
 struct localization_array {
     char* base;
@@ -224,7 +225,8 @@ void ru_loc_system_answer(void) {
 */
 
 // =========================
-// RIGHTS PARAMETER BLOCK
+// [RIGHTS PARAMETER BLOCK]
+// [Build: Unknown]
 // =========================
 struct rights_array {
   char* AP;
@@ -384,8 +386,8 @@ void DEV_DEBUG() {
 */
 
 // ==============================
-// KERNEL PARAMETER BLOCK 
-// -> [Build: 14.04.2026]
+// [KERNEL PARAMETER BLOCK]
+// [Build: 14.04.2026]
 // ==============================
 struct KERNEL_ARRAY {
     int kernel_after;
@@ -432,15 +434,15 @@ void kernel_c() {
     clear_screen();
     disable_bios_cursor();
     
-    // BASE STATEMENT LOCALIZATION
+    // [BASE STATEMENT LOCALIZATION]
     if (localization.base_state == 1 && localization.en_state == 0 && localization.ru_state == 0) {
       base_loc_system_answer();
     }
-    // EN STATEMENT LOCALIZATION
+    // [EN STATEMENT LOCALIZATION]
     else if (localization.en_state == 1 && localization.base_state == 0 && localization.ru_state == 0) {
       en_loc_system_answer();
     }
-    /* RU STATEMENT LOCALIZATION
+    /* [RU STATEMENT LOCALIZATION]
     else if (localization.ru_state == 1 && localization.base_state == 0 && localization.en_state == 0) {
       ru_loc_system_answer();
     }
