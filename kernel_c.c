@@ -213,7 +213,7 @@ void ru_loc_system_answer(void) {
   print("limine\n", 0x0B);
   print("Запуск...\n", 0x0F);
   print("Загрузка: C\n", 0x0F);
-  print("Инициализирование системы...\n", 0x0F);
+  print("Инициализиция системы...\n", 0x0F);
   print("Настройка: IDT, PIC, PIT\n", 0x0F);
   print("[ ВКЛ ] IDT\n", 0x0A);
   print("[ ВКЛ ] PIC\n", 0x0A);
