@@ -8,7 +8,8 @@
 # MidnightOS
 
 <img width="316" height="226" alt="image" src="https://github.com/user-attachments/assets/d50cee46-630f-496e-998c-c98237663944" />
-<img width="309" height="128" alt="image" src="https://github.com/user-attachments/assets/cd52655e-dd4b-4d0a-af1f-d8661745be20" />
+<img width="531" height="308" alt="image" src="https://github.com/user-attachments/assets/1427aef9-62c0-4c59-8993-96ed3958a8f7" />
+
 
 **32-bit OS written in C and Assembly.**
 **Boots with Limine. Own console. Own commands. Own world.**
