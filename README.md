@@ -12,7 +12,7 @@
 **32-bit OS written in C and Assembly.**
 **Boots with Limine. Own console. Own commands. Own world.**
 
-## NEW UPDATE! [08.04.2026]
+## NEW UPDATE! [15.04.2026]
 
 ## Features
 - Can change kernel in your system! [Data-Rewrite]
@@ -24,14 +24,6 @@
 - Keyboard input (scancodes → ASCII)
 - Console with commands: `hlp`, `clr`, `inf`, `poff`, `rboot`
 - Pure C + NASM. No stdlib. No garbage.
-
-## Change Log
-- Added:
--   Localization Parameter [base, en, ru]
--   Localization Parameter Block [LPB]
--   Get-Lang system [Not finished]
--   Rights Parameter Block [RPB]
--   Get-Rights system [Not finished]
 
 ## Discord: https://discord.com/channels/1491405695042457620
 **Join in Discord if you want to:**
