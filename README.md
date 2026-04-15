@@ -8,7 +8,8 @@
 # MidnightOS
 
 <img width="316" height="226" alt="image" src="https://github.com/user-attachments/assets/d50cee46-630f-496e-998c-c98237663944" />
-<img width="531" height="308" alt="image" src="https://github.com/user-attachments/assets/1427aef9-62c0-4c59-8993-96ed3958a8f7" />
+<img width="531" height="307" alt="image" src="https://github.com/user-attachments/assets/e37f4211-8791-4862-aaf4-e4bf44309be1" />
+
 
 
 **32-bit OS written in C and Assembly.**
